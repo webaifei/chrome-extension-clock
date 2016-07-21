@@ -1,0 +1,1042 @@
+<style>* {
+        margin: 0;
+        padding: 0;
+    }
+    
+    li {
+        list-style-type: none;
+    }
+    a{text-decoration: none}
+    body{background: #f69601;}
+
+    .fix-bottom{ height:90px;position: fixed; box-sizing: border-box; left: 0; bottom: 0;  width: 100%; padding: 4px 10px; overflow: hidden; line-height: 1; background-color: rgba(0,0,0,0.7); z-index: 2;}
+    .fix-bottom p{font-size: 12px; margin-top:10px;margin-bottom: 9px;  color: #fff;width:100%;text-align: center;}
+    
+    .fb-logo {
+        color: #fff;
+        font-size: 14px;
+    }
+    
+    .fb-logo-img {
+        width: 40px;
+        height: 40px;
+        background: url(http://img10.360buyimg.com/cms/jfs/t1183/186/686337570/3864/1bbe3315/553dce10Nf1d299e5.png) no-repeat;
+        background-size: 100% 100%;
+        float: left;
+        width: 40px;
+        margin-right: 10px;
+        vertical-align: bottom;
+    }
+    
+    .fb-logo p {
+        font-size: 18px;
+        margin-bottom: 8px;
+        color: #fff;
+    }
+    
+    .fb-logo span {
+        color: #fff;
+    }
+    
+    .fb-download{height:40px;width:200px;margin:0 auto;text-align: center;}
+    .fb-download a{ display:block;border-radius: 4px;  height:40px;line-height: 40px; font-size: 15px; color: #fff; background: #d7454e;}
+    
+    iframe {
+        display: none;
+    }
+    /*弹出层*/
+    
+    .cd-popup { left: 0; top: 0; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.8);opacity: 0; visibility: hidden; overflow: auto; -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s; -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s; transition: opacity 0.3s 0s, visibility 0s 0.3s; z-index: 999 }
+    .cd-popup.is-visible { opacity: 1; visibility: visible; -webkit-transition: opacity 0.3s 0s, visibility 0s 0s; -moz-transition: opacity 0.3s 0s, visibility 0s 0s; transition: opacity 0.3s 0s, visibility 0s 0s }
+    .cd-popup-container { position: absolute; left: 5%; top: 0; z-index: 2000; width: 90%; margin: 5em auto; border-radius: .25em .25em .4em .4em; text-align: center; -webkit-transform: translateY(-150%); -moz-transform: translateY(-150%); -ms-transform: translateY(-150%); -o-transform: translateY(-150%); transform: translateY(-150%); -webkit-backface-visibility: hidden; -webkit-transition-property: -webkit-transform; -moz-transition-property: -moz-transform; transition-property: transform; -webkit-transition-duration: 0.3s; -moz-transition-duration: 0.3s; transition-duration: 0.3s }
+    .cd-popup-cover { max-height: 350px; overflow: scroll; -webkit-overflow-scrolling: touch; padding: 1em 1.5em; background-color: #F8F9FB; -webkit-border-radius: 5px; border-radius: 5px; }
+    .cd-popup-cover img { width: 100% }
+    .cd-popup-cover p { font-size: 12px; line-height: 22px; color: #7d7d7d; text-align: left; }
+    .cd-popup-cover h1{font-size:18px;line-height:2em;color:#7d7d7d;background: url(http://img10.360buyimg.com/cms/jfs/t2410/330/420705444/2533/40332d9d/560a0a0dN022d44fb.png) 50% 50% no-repeat;text-indent: -999em;background-size: 80%}
+    .img-replace{display:inline-block;overflow:hidden;text-indent:100%;color:transparent;white-space:nowrap}
+    .cd-popup .cd-popup-close{position:absolute;top:-11px;right:-8px;width:26.5px;height:28.5px;background:url(http://img10.360buyimg.com/cms/jfs/t994/128/563766866/2678/b7859c84/552e3989Nb9f099b9.png) 0 0 no-repeat;-webkit-background-size:100%;background-size:100%}
+    .is-visible .cd-popup-container{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);-o-transform:translateY(0);transform:translateY(0)}
+
+    /*全局构架*/
+    .content{z-index: 1; width: 100%;position: relative;}
+    .content img{ width: 100%; height: auto;display: block;}
+    .content .partOne .shrink,.content .partOne .shrikO{width:80%;position: absolute;left: 10%;top:3%;}
+    .content .partOne .fontB{width:92%;position: absolute;left: 4%;top:4.5%;z-index: 10}
+    .content .partThree{width:100%;}
+    .content .partThree .imgs-container{width:100%;}
+    .marginTop15{margin-top: 15px;}
+    .content a{ display: block; text-indent: -999em;}
+    .cd-popup-btn{width: 31%;height: 1.5%;position: absolute;top: 93%;left: 61.1%}
+    .page-down{ width: 63%;height:3%;position: absolute;top: 81%;left: 18.5%; }
+    .hide{display: none!important}
+
+    .maskLayer,.maskLayer2{width: 100%;height: 100%;background: rgba(0,0,0,.7);position: fixed;top: 0;left: 0;z-index: 3}
+    .maskLayer-container{width:80%;height:auto;z-index: 4;margin:45% auto;}
+    .closeImg{width:10%;z-index: 4;position: absolute;left: 80%;top:20%;display: block;}
+    .maskLayer2 img,.maskLayer .closeImg img{width:100%;}
+    .gotoduobaoba{height:5%;width:30%;z-index: 4;position: absolute;left: 33%;top:65%;display: block;}
+    .maskLayer2 .gotoduobaoba1{height:5%;width:30%;z-index: 4;position: absolute;left: 33%;top:59%;display: block;}</style>    <style>.swiper-container { margin: 0 auto; position: relative; overflow: hidden; z-index: 1 }
+.swiper-container-no-flexbox .swiper-slide { float: left }
+.swiper-container-vertical>.swiper-wrapper { -webkit-box-orient: vertical; -moz-box-orient: vertical; -ms-flex-direction: column; -webkit-flex-direction: column; flex-direction: column }
+.swiper-wrapper { position: relative; width: 100%;  z-index: 1; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-transition-property: -webkit-transform; -moz-transition-property: -moz-transform; -o-transition-property: -o-transform; -ms-transition-property: -ms-transform; transition-property: transform; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box }
+.swiper-container-android .swiper-slide, .swiper-wrapper { -webkit-transform: translate3d(0, 0, 0); -moz-transform: translate3d(0, 0, 0); -o-transform: translate(0, 0); -ms-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0) }
+.swiper-container-multirow>.swiper-wrapper { -webkit-box-lines: multiple; -moz-box-lines: multiple; -ms-flex-wrap: wrap; -webkit-flex-wrap: wrap; flex-wrap: wrap }
+.swiper-container-free-mode>.swiper-wrapper { -webkit-transition-timing-function: ease-out; -moz-transition-timing-function: ease-out; -ms-transition-timing-function: ease-out; -o-transition-timing-function: ease-out; transition-timing-function: ease-out; margin: 0 auto }
+.swiper-slide { -webkit-flex-shrink: 0; -ms-flex: 0 0 auto; flex-shrink: 0; width: 100%;  position: relative }
+.swiper-container-autoheight, .swiper-container-autoheight .swiper-slide { height: auto }
+.swiper-container-autoheight .swiper-wrapper { -webkit-box-align: start; -ms-flex-align: start; -webkit-align-items: flex-start; align-items: flex-start; -webkit-transition-property: -webkit-transform, height; -moz-transition-property: -moz-transform; -o-transition-property: -o-transform; -ms-transition-property: -ms-transform; transition-property: transform, height }
+.swiper-container .swiper-notification { position: absolute; left: 0; top: 0; pointer-events: none; opacity: 0; z-index: -1000 }
+.swiper-wp8-horizontal { -ms-touch-action: pan-y; touch-action: pan-y }
+.swiper-wp8-vertical { -ms-touch-action: pan-x; touch-action: pan-x }
+.swiper-button-next, .swiper-button-prev { position: absolute; top: 50%; width: 27px; height: 44px; margin-top: -22px; z-index: 10; cursor: pointer; -moz-background-size: 27px 44px; -webkit-background-size: 27px 44px; background-size: 27px 44px; background-position: center; background-repeat: no-repeat }
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled { opacity: .35; cursor: auto; pointer-events: none }
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E"); left: 10px; right: auto }
+.swiper-button-prev.swiper-button-black, .swiper-container-rtl .swiper-button-next.swiper-button-black { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E") }
+.swiper-button-prev.swiper-button-white, .swiper-container-rtl .swiper-button-next.swiper-button-white { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") }
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E"); right: 10px; left: auto }
+.swiper-button-next.swiper-button-black, .swiper-container-rtl .swiper-button-prev.swiper-button-black { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E") }
+.swiper-button-next.swiper-button-white, .swiper-container-rtl .swiper-button-prev.swiper-button-white { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") }
+.swiper-pagination { position: absolute; text-align: center; -webkit-transition: .3s; -moz-transition: .3s; -o-transition: .3s; transition: .3s; -webkit-transform: translate3d(0, 0, 0); -ms-transform: translate3d(0, 0, 0); -o-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); z-index: 10 }
+.swiper-pagination.swiper-pagination-hidden { opacity: 0 }
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction { bottom: 10px; left: 0; width: 100% }
+.swiper-pagination-bullet { width: 8px; height: 8px; display: inline-block; border-radius: 100%; background: #000; opacity: .2 }
+button.swiper-pagination-bullet { border: none; margin: 0; padding: 0; box-shadow: none; -moz-appearance: none; -ms-appearance: none; -webkit-appearance: none; appearance: none }
+.swiper-pagination-clickable .swiper-pagination-bullet { cursor: pointer }
+.swiper-pagination-white .swiper-pagination-bullet { background: #fff }
+.swiper-pagination-bullet-active { opacity: 1; background: #007aff }
+.swiper-pagination-white .swiper-pagination-bullet-active { background: #fff }
+.swiper-pagination-black .swiper-pagination-bullet-active { background: #000 }
+.swiper-container-vertical>.swiper-pagination-bullets { right: 10px; top: 50%; -webkit-transform: translate3d(0, -50%, 0); -moz-transform: translate3d(0, -50%, 0); -o-transform: translate(0, -50%); -ms-transform: translate3d(0, -50%, 0); transform: translate3d(0, -50%, 0) }
+.swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet { margin: 5px 0; display: block }
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet { margin: 0 5px }
+.swiper-pagination-progress { background: rgba(0, 0, 0, .25); position: absolute }
+.swiper-pagination-progress .swiper-pagination-progressbar { background: #007aff; position: absolute; left: 0; top: 0; width: 100%; height: 100%; -webkit-transform: scale(0); -ms-transform: scale(0); -o-transform: scale(0); transform: scale(0); -webkit-transform-origin: left top; -moz-transform-origin: left top; -ms-transform-origin: left top; -o-transform-origin: left top; transform-origin: left top }
+.swiper-container-rtl .swiper-pagination-progress .swiper-pagination-progressbar { -webkit-transform-origin: right top; -moz-transform-origin: right top; -ms-transform-origin: right top; -o-transform-origin: right top; transform-origin: right top }
+.swiper-container-horizontal>.swiper-pagination-progress { width: 100%; height: 4px; left: 0; top: 0 }
+.swiper-container-vertical>.swiper-pagination-progress { width: 4px; height: 100%; left: 0; top: 0 }
+.swiper-pagination-progress.swiper-pagination-white { background: rgba(255, 255, 255, .5) }
+.swiper-pagination-progress.swiper-pagination-white .swiper-pagination-progressbar { background: #fff }
+.swiper-pagination-progress.swiper-pagination-black .swiper-pagination-progressbar { background: #000 }
+.swiper-container-3d { -webkit-perspective: 1200px; -moz-perspective: 1200px; -o-perspective: 1200px; perspective: 1200px }
+.swiper-container-3d .swiper-cube-shadow, .swiper-container-3d .swiper-slide, .swiper-container-3d .swiper-slide-shadow-bottom, .swiper-container-3d .swiper-slide-shadow-left, .swiper-container-3d .swiper-slide-shadow-right, .swiper-container-3d .swiper-slide-shadow-top, .swiper-container-3d .swiper-wrapper { -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; -ms-transform-style: preserve-3d; transform-style: preserve-3d }
+.swiper-container-3d .swiper-slide-shadow-bottom, .swiper-container-3d .swiper-slide-shadow-left, .swiper-container-3d .swiper-slide-shadow-right, .swiper-container-3d .swiper-slide-shadow-top { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10 }
+.swiper-container-3d .swiper-slide-shadow-left { background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, 0))); background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)); background-image: -moz-linear-gradient(right, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)); background-image: -o-linear-gradient(right, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)); background-image: linear-gradient(to left, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)) }
+.swiper-container-3d .swiper-slide-shadow-right { background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, 0))); background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)); background-image: -moz-linear-gradient(left, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)); background-image: -o-linear-gradient(left, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)); background-image: linear-gradient(to right, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)) }
+.swiper-container-3d .swiper-slide-shadow-top { background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, 0))); background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)); background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)); background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)); background-image: linear-gradient(to top, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)) }
+.swiper-container-3d .swiper-slide-shadow-bottom { background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, 0))); background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)); background-image: -moz-linear-gradient(top, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)); background-image: -o-linear-gradient(top, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)); background-image: linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)) }
+.swiper-container-coverflow .swiper-wrapper, .swiper-container-flip .swiper-wrapper { -ms-perspective: 1200px }
+.swiper-container-cube, .swiper-container-flip { overflow: visible }
+.swiper-container-cube .swiper-slide, .swiper-container-flip .swiper-slide { pointer-events: none; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden; z-index: 1 }
+.swiper-container-cube .swiper-slide .swiper-slide, .swiper-container-flip .swiper-slide .swiper-slide { pointer-events: none }
+.swiper-container-cube .swiper-slide-active, .swiper-container-cube .swiper-slide-active .swiper-slide-active, .swiper-container-flip .swiper-slide-active, .swiper-container-flip .swiper-slide-active .swiper-slide-active { pointer-events: auto }
+.swiper-container-cube .swiper-slide-shadow-bottom, .swiper-container-cube .swiper-slide-shadow-left, .swiper-container-cube .swiper-slide-shadow-right, .swiper-container-cube .swiper-slide-shadow-top, .swiper-container-flip .swiper-slide-shadow-bottom, .swiper-container-flip .swiper-slide-shadow-left, .swiper-container-flip .swiper-slide-shadow-right, .swiper-container-flip .swiper-slide-shadow-top { z-index: 0; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden }
+.swiper-container-cube .swiper-slide { visibility: hidden; -webkit-transform-origin: 0 0; -moz-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0; width: 100%; height: 100% }
+.swiper-container-cube.swiper-container-rtl .swiper-slide { -webkit-transform-origin: 100% 0; -moz-transform-origin: 100% 0; -ms-transform-origin: 100% 0; transform-origin: 100% 0 }
+.swiper-container-cube .swiper-slide-active, .swiper-container-cube .swiper-slide-next, .swiper-container-cube .swiper-slide-next+.swiper-slide, .swiper-container-cube .swiper-slide-prev { pointer-events: auto; visibility: visible }
+.swiper-container-cube .swiper-cube-shadow { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; background: #000; opacity: .6; -webkit-filter: blur(50px); filter: blur(50px); z-index: 0 }
+.swiper-container-fade.swiper-container-free-mode .swiper-slide { -webkit-transition-timing-function: ease-out; -moz-transition-timing-function: ease-out; -ms-transition-timing-function: ease-out; -o-transition-timing-function: ease-out; transition-timing-function: ease-out }
+.swiper-container-fade .swiper-slide { pointer-events: none; -webkit-transition-property: opacity; -moz-transition-property: opacity; -o-transition-property: opacity; transition-property: opacity }
+.swiper-container-fade .swiper-slide .swiper-slide { pointer-events: none }
+.swiper-container-fade .swiper-slide-active, .swiper-container-fade .swiper-slide-active .swiper-slide-active { pointer-events: auto }
+.swiper-scrollbar { border-radius: 10px; position: relative; -ms-touch-action: none; background: rgba(0, 0, 0, .1) }
+.swiper-container-horizontal>.swiper-scrollbar { position: absolute; left: 1%; bottom: 3px; z-index: 50; height: 5px; width: 98% }
+.swiper-container-vertical>.swiper-scrollbar { position: absolute; right: 3px; top: 1%; z-index: 50; width: 5px; height: 98% }
+.swiper-scrollbar-drag { height: 100%; width: 100%; position: relative; background: rgba(0, 0, 0, .5); border-radius: 10px; left: 0; top: 0 }
+.swiper-scrollbar-cursor-drag { cursor: move }
+.swiper-lazy-preloader { width: 42px; height: 42px; position: absolute; left: 50%; top: 50%; margin-left: -21px; margin-top: -21px; z-index: 10; -webkit-transform-origin: 50%; -moz-transform-origin: 50%; transform-origin: 50%; -webkit-animation: swiper-preloader-spin 1s steps(12, end) infinite; -moz-animation: swiper-preloader-spin 1s steps(12, end) infinite; animation: swiper-preloader-spin 1s steps(12, end) infinite }
+.swiper-lazy-preloader:after { display: block; content: ""; width: 100%; height: 100%; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%236c6c6c'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); background-position: 50%; -webkit-background-size: 100%; background-size: 100%; background-repeat: no-repeat }
+.swiper-lazy-preloader-white:after { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%23fff'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") }
+@-webkit-keyframes swiper-preloader-spin {
+    100% { -webkit-transform: rotate(360deg) }
+}
+@keyframes swiper-preloader-spin {
+    100% { transform: rotate(360deg) }
+}</style>
+<div class="wrap">        
+	<div class="fix-bottom J_openBtn" style="display: none;">                
+		<p>
+			            京东钱包诚意之作        
+		</p>                
+		<div class="fb-download">            
+			<a href="http://sale.jd.com/app/act/KBuoE641DZmxgYf.html" clstag="jr|keycount|jr_btnOpen|jr_btn">打开京东钱包</a>        
+		</div>        
+	</div>        
+	<section class="content">                
+	<div class="partOne">                        
+		<img alt="" src="http://img10.360buyimg.com/cms/jfs/t2602/352/3180992501/126226/3e60f144/57833bddN255e6766.jpg" />            <img class="fontB" alt="" src="http://img14.360buyimg.com/cms/jfs/t2725/277/3163436234/104301/c1f44483/5783424aNb85f57a3.png" />                    <img class="shrink hide" alt="" src="http://img12.360buyimg.com/cms/jfs/t2992/158/1352535437/27577/82184521/577f6d79N04017124.png" />                    <img class="shrikO" alt="" src="http://img12.360buyimg.com/cms/jfs/t2983/298/1436660008/27545/4f22b178/57833be0Nc7bdf9d2.png" />                
+	</div>                
+	<div class="partTwo">            
+		<img alt="" src="http://img10.360buyimg.com/cms/jfs/t2692/348/3067504472/125413/5aab2f25/577f43f4N27a34d2b.jpg" />        
+	</div>                
+	<div class="partThree">                        
+		<div id="imgs-container" style="padding:0 12.67%">                                
+			<div class="swiper-container">                                        
+				<div class="swiper-wrapper">                                                
+					<div class="swiper-slide">                            
+						<a href="javascript:;" class="slide-a" data-id="2"><img class="swiper-slide" src="http://img11.360buyimg.com/cms/jfs/t2794/222/3097927989/21525/dbdf01a2/577f4596N95cfb95f.png" alt="" /></a>                        
+					</div>                                                
+					<div class="swiper-slide">                            
+						<a href="javascript:;" class="slide-a" data-id="1"><img class="swiper-slide" src="http://img12.360buyimg.com/cms/jfs/t2623/282/3111282518/21008/7bd04025/577f4596N3b073d4c.png" alt="" /></a>                        
+					</div>                                                
+					<div class="swiper-slide">                            
+						<a href="javascript:;" class="slide-a" data-id="0"><img class="swiper-slide" src="http://img14.360buyimg.com/cms/jfs/t2920/162/1365912765/23202/2970ee1f/577f4596N95eb8e5f.png" alt="" /></a>                        
+					</div>                                                
+					<div class="swiper-slide">                            
+						<a href="javascript:;" class="slide-a" data-id="7"><img class="swiper-slide" src="http://img11.360buyimg.com/cms/jfs/t2989/339/1358206199/20292/afb2c319/577f4596Na339d56a.png" alt="" /></a>                        
+					</div>                                                
+					<div class="swiper-slide">                            
+						<a href="javascript:;" class="slide-a" data-id="5"><img class="swiper-slide" src="http://img14.360buyimg.com/cms/jfs/t2974/149/1372353956/21267/d170df65/577f45a8Na81d713e.png" alt="" /></a>                        
+					</div>                                                
+					<div class="swiper-slide">                            
+						<a href="javascript:;" class="slide-a" data-id="6"><img class="swiper-slide" src="http://img14.360buyimg.com/cms/jfs/t2881/173/3090412311/25932/644d7aa0/577f45a8N45fccc8e.png" alt="" /></a>                        
+					</div>                                                
+					<div class="swiper-slide">                            
+						<a href="javascript:;" class="slide-a" data-id="4"><img class="swiper-slide" src="http://img14.360buyimg.com/cms/jfs/t2650/202/3128707042/22006/e77e3a5c/577f45a8N77cda049.png" alt="" /></a>                        
+					</div>                                                
+					<div class="swiper-slide">                            
+						<a href="javascript:;" class="slide-a" data-id="3"><img class="swiper-slide" src="http://img12.360buyimg.com/cms/jfs/t2671/187/3144638026/19243/b5b5767b/577f45a8N75e67498.png" alt="" /></a>                        
+					</div>                                           
+				</div>                                        
+				<div class="swiper-pagination">                    
+				</div>                                
+			</div>                        
+		</div>                
+	</div>                    
+	<div class="partFour">            
+		<img alt="" src="http://img11.360buyimg.com/cms/jfs/t2707/257/3060024066/58186/598c58b2/577f43f3N65f761c4.jpg" />        
+	</div>                
+	<div class="partFive">            
+		<img alt="" src="http://img11.360buyimg.com/cms/jfs/t2887/298/3014015209/167922/d11ea154/577f43f5N9e7e341a.jpg" />        
+	</div>                        
+	<a href="javascript:;" class="cd-popup-btn" clstag="jr|keycount|jr_btnName|jr_btn"></a>                <a href="javascript:;" class="page-down" clstag="jr|keycount|jr_btnKaihu|jr_btnKaihu"></a>        </section>    
+	<div class="cd-popup-wrap">                    
+		<div class="cd-popup">                                    
+			<div class="cd-popup-container">                                                    
+				<div class="cd-popup-cover">                                                                
+					<h1>
+						                        活动规则                    
+					</h1>                                        
+					<p>
+						                        一、活动简介                    
+					</p>                                        
+					<p>
+						                        1.活动时间：即日—2016年8月8日                    
+					</p>                                        
+					<p>
+						                        2.活动平台：京东钱包APP“股神”                    
+					</p>                                        
+					<p>
+						                        3.参与主体资格：京东钱包用户                    
+					</p>                                        
+					<p>
+						                        4.活动形式：在京东钱包“股神”成功开通证券资金帐号的用户，都可以获得18元现金红包，每天分享活动页可获得1张宝券。                    
+					</p>                                        
+					<p>
+						                        二、活动规则：                    
+					</p>                                        
+					<p>
+						                        1.活动期间，用户在京东钱包”股神”成功开通任一券商证券资金账户即可获得18元现金红包，用户须在2016年8月8日23:59:59前完成开户；                    
+					</p>                                        
+					<p>
+						                        2.18元现金红包将在用户开户成功之日算起10个工作日内发放至完成证券开户对应的已完成实名认证的京东钱包账户余额，用户可进入京东钱包-我的-账户余额查询，同一用户开通同一证券账户仅可获得一次现金红包奖励；                    
+					</p>                                        
+					<p>
+						                        3.证券资金账户开户成功以证券公司的通知短信为准；                    
+					</p>                                        
+					<p>
+						                        4.用户每天分享指定活动页面到微信，可获得1张1元宝券，同一用户每天至多获得1张宝券；                    
+					</p>                                        
+					<p>
+						                        5.同一京东钱包账户、手机号、身份证号、京东账户、微信账户、证券资金账户、银行卡号、终端设备等与用户身份相关的信息，其中任意一项或者多项存在相同、相似或非真实有效等情况的，均可能被认定为同一用户，按照活动规则中的同一用户处理。                    
+					</p>                                        
+					<p>
+						                        三、宝券使用规则                    
+					</p>                                        
+					<p>
+						                        1.券将在领取之日发放至用户参与活动的京东钱包账户，用户可在京东钱包“我的-卡包-优惠券中”查看；                    
+					</p>                                        
+					<p>
+						                        2.仅限京东钱包移动客户端使用，1元宝券订单金额满5元时可使用；                    
+					</p>                                        
+					<p>
+						                        3.已完成京东钱包实名认证的用户可在券有效期内使用，未完成京东钱包实名认证的用户须在券有效期内进行实名认证，否则视为放弃该张券；                    
+					</p>                                        
+					<p>
+						                        4.同一订单只能使用一张券，且不能与其他优惠活动同时享受，券不可拆分使用、不可转赠、不可找零、不可兑现；                    
+					</p>                                        
+					<p>
+						                        5.优惠券有效期为3个自然日，自到账之日起算，券过期作废；                    
+					</p>                                        
+					<p>
+						                        6.如使用券的订单发生退款或退货，将退还用户实际支付的金额；在券有效期内的，则券退回至用户的账户，券退回后有效期不变，如已过有效期则券退还，券有效期延长24小时                    
+					</p>                                        
+					<p>
+						                        四、其他规则                    
+					</p>                                                                  
+					<p>
+						                        1.在本活动期间，如存在违规行为（包括但不限于恶意套取资金、机器作弊、虚假交易等违反诚实信用原则行为），京东钱包将取消用户的中奖资格，并有权撤销相关违规交易，必要时追究法律责任；                    
+					</p>                                                                  
+					<p>
+						                        2.如出现不可抗力或情势变更的情况（包括但不限于重大灾害事件、活动受政府机关指令需要停止举办或调整的、活动遭受严重网络攻击或因系统故障需要暂停举办的），京东钱包有权暂停或取消本次活动，并可依相关法律法规的规定主张免责；                    
+					</p>                                                                  
+					<p>
+						                        3.本活动规则及其未尽事宜同时受《京东钱包服务协议》及相关公告、规则约束；                    
+					</p>                                                                  
+					<p>
+						                        4.在法律允许的范围内，京东钱包对本次活动有解释权；                    
+					</p>                                                                  
+					<p>
+						                        5.本次活动与Apple Inc.无关。                    
+					</p>                                                                  
+					<p>
+						                        温馨提示：投资有风险，入市须谨慎。                    
+					</p>                                                                  
+					<p>
+						                        如有疑问，请致电京东钱包客服：95118。                    
+					</p>                                                                  
+					<p>
+						                        京东股神——真实投资分享平台                    
+					</p>                                                          
+				</div>                                                    
+				<a class="cd-popup-close img-replace" href="javascript:;"></a>                                    
+			</div>                    
+		</div>        
+	</div>        
+	<div class="maskLayer hide">        
+		<div class="maskLayer-container">            
+			<div>
+				<img src="http://img14.360buyimg.com/cms/jfs/t2896/62/3270231670/89549/8ba4f40/57862e08N95f55d69.png" alt="" />
+			</div>            
+			<a href="javascript:;" class="gotoduobaoba"></a>        
+		</div>        
+		<div class="closeImg">            
+			<img src="http://img10.360buyimg.com/cms/jfs/t2668/343/3254132822/2236/12a631b1/57862e08Nccaeb9f1.png" alt="" />        
+		</div>    
+	</div>    
+	<div class="maskLayer2 hide">        
+		<div class="maskLayer-container">            
+			<div>
+				<img src="http://img10.360buyimg.com/cms/jfs/t2611/247/3236802674/85245/ce6b23d9/57862e08Nae8d0c62.png" alt="" />
+			</div>            
+			<a href="javascript:;" class="gotoduobaoba1"></a>        
+		</div>        
+		<div class="closeImg">            
+			<img src="http://img10.360buyimg.com/cms/jfs/t2668/343/3254132822/2236/12a631b1/57862e08Nccaeb9f1.png" alt="" />        
+		</div>    
+	</div>    
+	<iframe src="" style="display:none;" name="hideiframe">    
+	</iframe>
+</div>
+<script src="https://static.jdpay.com/basic/dist/js/m-public/swiper.min.js">
+</script>
+<script src="https://static.jdpay.com/basic/dist/js/m-public/zepto.min.js">
+</script>
+<script>var swiper = new Swiper('.swiper-container', {
+    pagination: '.swiper-pagination',
+    effect: 'coverflow',
+    centeredSlides: true,
+    paginationClickable: true,
+    spaceBetween: 30,
+    loop: true
+});
+</script>
+<script>function connectWebViewJavascriptBridge(callback) {
+        if (window.WebViewJavascriptBridge) {
+            callback(WebViewJavascriptBridge)
+        } else {
+            document.addEventListener("WebViewJavascriptBridgeReady", function() {
+                callback(WebViewJavascriptBridge)
+            }, false)
+        }
+    }
+
+    function JDP() {
+        this.ua = navigator.userAgent;
+        this.android = this.ua.match(/(Android)\s+([\d.]+)/);
+        this.ios = this.ua.match(/(iPhone\sOS)\s([\d_]+)/)
+    }
+    JDP.prototype = {
+        constructor: JDP,
+        getInfo: function(fn) {
+            var callback = ("globalCallback" + Math.random()).replace(/\./, "");
+            this.fnCallback(callback, fn);
+            if (this.android) {
+                android.getInfo(callback);
+            } else {
+                this.openIframe("native://getInfo?callback=" + callback)
+            }
+        },
+        setTitle: function(text) {
+            if (this.android) {
+                android.setTitleName(text)
+            } else {
+                this.openIframe("native://setTitleName?titleName=" + text)
+            }
+        },
+        shareText: function(json) {
+            var callback = ("globalCallback" + Math.random()).replace(/\./, ""),
+                channel = json.channel || "";
+            this.fnCallback(callback, json.callback);
+            if (this.android) {
+                android.shareText(json.text, channel, callback)
+            } else {
+                this.openIframe("native://shareText?text=" + json.text + "&jsonChannel=" + channel + "&callback=" + callback)
+            }
+        },
+        shareImage: function(json) {
+            var callback = ("globalCallback" + Math.random()).replace(/\./, ""),
+                channel = json.channel || "";
+            this.fnCallback(callback, json.callback);
+            if (this.android) {
+                android.shareImage(json.startY, json.endY, json.channel, callback)
+            } else {
+                this.openIframe("native://shareImage?startY=" + json.startY + "&endY=" + json.endY + "&jsonChannel=" + json.channel + "&callback=" + callback)
+            }
+        },
+        shareUrl: function(json) {
+            var callback = ("globalCallback" + Math.random()).replace(/\./, ""),
+                channel = json.channel || "";
+            this.fnCallback(callback, json.callback);
+            if (this.android) {
+                android.shareWebPage(json.url, json.title, json.desc, channel, callback)
+            } else {
+                this.openIframe("native://shareWebPage?url=" + json.url + "&webTitle=" + json.title + "&webDesc=" + json.desc + "&jsonChannel=" + channel + "&callback=" + callback)
+            }
+        },
+        json2str: function(json) {
+            var str = "";
+            for (var n in json) {
+                str += "&" + n + "=" + json[n]
+            }
+            return str
+        },
+        openIframe: function(src) {
+            var ifr = document.createElement("iframe");
+            ifr.src = src;
+            document.body.appendChild(ifr);
+            setTimeout(function() {
+                document.body.removeChild(ifr)
+            }, 2000)
+        },
+        fnCallback: function(name, callback) {
+            window[name] = function(result) {
+                callback && callback(result);
+                delete window[name]
+            }
+        },
+        setMenu: function(menuList) {
+            var json = {};
+            str = "[";
+            menuList.forEach(function(obj, index) {
+                json["item" + index] = obj;
+                str += JSON.stringify(obj) + ","
+            });
+            str = str.substring(0, str.length - 1);
+            str += "]";
+            if (this.android) {
+                android.setTitleMenu(str)
+            } else {
+                WebViewJavascriptBridge.callHandler("setMenu", json)
+            }
+        }
+    };
+    window.JDP = JDP;
+    var jdp = new JDP();
+</script>
+<script>window.dataForWeixin = {
+        appId: "",
+        MsgImg: 'https://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+        TLImg: 'https://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+        url: 'https://sale.jd.com/m/act/tSQqrfWOk73ciR5.html',
+        title: '股神7月送真金',
+        desc: '股神开户送18元～分享生财之道再获夺金机会！',
+        fakeid: "",
+        callback: function() {}
+    };
+    (function(w, d) {
+
+        var n = w.navigator,
+            ua = n.userAgent,
+            Util = {
+                baseUrl: 'https://qianbao.jd.com/p/page/download.htm', //京东域，做打开app用
+                androidDownload: 'https://qianbao.jd.com/p/page/download.htm',
+                iosDownload: 'https://itunes.apple.com/us/app/wang-yin-qian-bao/id832444218?ls=1&mt=8',
+                inWx: (ua.search(/micromessenger/ig) == -1) ? false : true,
+                inIosApp: (ua.search(/safari/ig) == -1 && ua.indexOf('jdapp') == -1) ? true : false,
+                inAndroid: ua.indexOf('Android') > -1 || ua.indexOf('Linux') > -1,
+                inIos: ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1,
+                //检查后缀
+                check_domain: function(host) {
+                    var pattern = "/^aero$|^cat$|^coop$|^int$|^museum$|^pro$|^travel$|^xxx$|^com$|^net$|^gov$|^org$|^mil$|^edu$|^biz$|^info$|^name$|^ac$|^mil$|^co$|^ed$|^gv$|^nt$|^bj$|^hz$|^sh$|^tj$|^cq$|^he$|^nm$|^ln$|^jl$|^hl$|^js$|^zj$|^ah$|^hb$|^hn$|^gd$|^gx$|^hi$|^sc$|^gz$|^yn$|^xz$|^sn$|^gs$|^qh$|^nx$|^xj$|^tw$|^hk$|^mo$|^fj$|^ha$|^jx$|^sd$|^sx$/i";
+                    if (str.match(pattern)) {
+                        return 1;
+                    }
+                    return 0;
+                },
+                //返回域
+                get_domain: function() {
+                    var host = d.domain.replace(/^www\./, ""),
+                        arr = host.split('.'),
+                        len = arr.length,
+                        domain;
+                    if (len == 3) {
+                        domain = arr[1] + '.' + arr[2];
+                    } else if (len > 3) {
+                        var ip_pat = "^[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*$";
+                        if (host.match(ip_pat)) {
+                            return host;
+                        }
+                        if (Util.check_domain(arr[len - 2])) {
+                            domain = arr[len - 3] + "." + arr[len - 2] + "." + arr[len - 1];
+                        } else {
+                            domain = arr[len - 2] + "." + arr[len - 1];
+                        }
+                    }
+                    return domain;
+                },
+                //判断是否在app内
+                inApp: function() {
+                    if (Util.inAndroid) {
+                        return typeof(android) != 'undefined' ? true : false;
+                    } else if (Util.inIos) {
+                        return this.inIosApp;
+                    } else {
+                        return false;
+                    }
+                }
+            };
+
+
+        function json2str(json) {
+            var str = '';
+            for (var i in json) {
+                str += '&' + i + '=' + json[i]
+            };
+            return str;
+        };
+
+        function connectWebViewJavascriptBridge(callback) { //ios setMenu
+            if (window.WebViewJavascriptBridge) {
+                callback(WebViewJavascriptBridge)
+            } else {
+                document.addEventListener('WebViewJavascriptBridgeReady', function() {
+                    callback(WebViewJavascriptBridge)
+                }, false)
+            }
+        }
+
+        //打开弹出提示
+        function showLayer() {
+            var downLoadUrl = Util.inIos ? Util.iosDownload : Util.androidDownload;
+            if (!document.querySelector('.J_layerDom')) {
+                var lDom = document.createElement('div');
+                lDom.className = 'J_layerDom';
+                lDom.style.cssText = 'position: fixed; z-index: 3000; left: 50%; top: 50%; margin: -85px 0 0 -140px; width: 280px; padding: 20px 0; text-align: center; background: rgba(0,0,0, .8); border-radius: 6px; color: #fff';
+                lDom.innerHTML = '<p style="margin-bottom: 30px; font-size: 18px;">下载安装京东钱包客户端</p><a href="' + downLoadUrl + '" class="J_appDownload" style="display: block; width: 90%; margin-left: 5%; font-size: 16px; line-height: 40px; border-radius: 3px; text-decoration:none;font-weight: bold; background: #d9434b; color: #fff; ">立即下载</a>';
+                document.body.appendChild(lDom);
+            } else {
+                document.querySelector('.J_layerDom').style.display = 'block';
+            }
+            setTimeout(function() {
+                document.querySelector('.J_layerDom').style.display = 'none';
+            }, 6000);
+        };
+
+        //构造iframe激活app
+        function openIframe(json) {
+            var str = json2str(json.params);
+            var ifrSrc = 'wangyin://wallet/start?module=' + json.name + str;
+            if (!ifrSrc) return;
+
+            var appOpenBtn = document.createElement('a');
+                appOpenBtn.href = ifrSrc;
+            if(navigator.userAgent.indexOf("Android") > -1 || navigator.userAgent.indexOf("Linux") > -1){
+                appOpenBtn.target = 'hideiframe';
+            }
+
+            appOpenBtn.style.display = 'none';
+            document.body.appendChild(appOpenBtn);
+            appOpenBtn.click();
+            setTimeout(function () {
+                document.body.removeChild(appOpenBtn);
+            }, 2000);
+
+
+            setTimeout(function() {
+                showLayer()
+            }, 300);
+        }
+
+        function openWithIframe(ifrSrc) {
+            var ifr = document.createElement('iframe');
+            ifr.src = ifrSrc;
+            ifr.style.display = 'none';
+            document.body.appendChild(ifr);
+            setTimeout(function() {
+                document.body.removeChild(ifr);
+            }, 2000);
+        };
+        //通过打开京东域的链接
+        function openLink(json) {
+            var url = Util.baseUrl;
+            if (json.name == 'ACTIVITY') {
+                url += '?url=' + json.params.browserUrl;
+            };
+            window.location.href = url + '#' + json.name;
+        };
+
+        //android客户端打开
+        function openAndroid(json) {
+            try {
+                json.name = json.name == 'LOGIN' ? 'HOME' : json.name;
+                if (json.name == 'ACTIVITY') {
+                    android.start(json.params.browserUrl, json.callback);
+                } else if (json.name == 'CLOSE') {
+                    android.close();
+                } else if (json.name == 'TITLE') {
+                    android.setTitleName(json.params.text);
+                } else {
+                    android.start(json.name, JSON.stringify(json.params), json.callback);
+                }
+            } catch (err) {
+                alert('请升级新版京东钱包');
+            }
+        };
+
+        //ios客户端打开
+        function openIos(json) {
+            var str = json.params ? json2str(json.params) : '',
+                url = 'native://start?name=' + json.name + str + '&callback=' + json.callback;
+            if (json.name == 'CLOSE') {
+                url = 'native://close';
+            } else if (json.name == 'ACTIVITY') {
+                url = 'native://start?name=' + json.params.browserUrl;
+            } else if (json.name == 'TITLE') {
+                url = 'native://setTitleName?titleName=' + json.params.text;
+            };
+            openWithIframe(url);
+            /*  try{
+             safari.open = url; //兼容iphone 4
+             }catch(err){
+             window.location.href = url;
+             }*/
+        };
+
+
+        /**
+         * @param json {name:module name,params:params,callback:function}
+         * android && inapp
+         * ios && inapp
+         * inwx && check domain
+         */
+        function openModel(json) {
+            if (Util.inAndroid && Util.inApp()) {
+                openAndroid(json);
+            } else if (Util.inIos && Util.inIosApp && !Util.inWx) {
+                openIos(json);
+            } else if (Util.inWx) {
+                if (Util.get_domain() == 'jd.com') {
+                    openIframe(json);
+                } else {
+                    openLink(json);
+                }
+            } else {
+                openIframe(json);
+            }
+        };
+
+
+        var App = window.App || {};
+        App.noop = function() {};
+        App.open = function() {
+            var len = arguments.length,
+                _this = this,
+                json = {
+                    name: '',
+                    params: {},
+                    callback: 'App.noop'
+                },
+                param;
+            json.name = arguments[0] ? arguments[0].toUpperCase() : 'LOGIN';
+            _this.noop = function() {};
+            if (len == 2) {
+                if (typeof(arguments[1]) == 'function') {
+                    _this.noop = arguments[1];
+                } else {
+                    param = arguments[1];
+                }
+            } else if (len == 3) {
+                if (typeof(arguments[2]) == 'function') {
+                    _this.noop = arguments[2];
+                }
+                param = arguments[1];
+            };
+
+            switch (json.name) {
+                case 'FUND':
+                    if (param) json.params.code = param;
+                    break;
+                case 'JRB':
+                    if (arguments[1]) {
+                        json.params.forceLogin = 'JRB';
+                        json.params.action = arguments[1];
+                        json.params.channel = 'web';
+                    }
+                    break;
+                case 'ACTIVITY':
+                    json.params.browserUrl = param;
+                    break;
+                case 'STOCK':
+                    if(arguments[2]){
+                        json.params.name = 'STOCK',
+                        json.params.openview = arguments[1];
+                        json.params.rankType = arguments[2];
+                    }
+                    break;
+                case 'TITLE':
+                    json.params.text = param;
+                    break;
+                default:
+                    break;
+            }
+            openModel(json);
+        };
+        App.close = function() {
+            openModel({
+                name: 'CLOSE'
+            });
+        };
+        App.share = function(json) {
+            var json = json || window.dataForWeixin;
+            if (Util.inAndroid && Util.inApp()) {
+                android.shareWebPage(json.url, json.title, json.desc);
+            } else if (Util.inIos && Util.inIosApp && !Util.inWx) {
+                var url = 'native://shareWebPage?url=' + json.url + '&webTitle=' + json.title + '&webDesc=' + json.desc;
+                try {
+                    safari.open = url; //兼容iphone 4
+                } catch (err) {
+                    window.location.href = url;
+                }
+            } else if (Util.inWx) {
+                window.dataForWeixin.url = json.url;
+                window.dataForWeixin.title = json.title;
+                window.dataForWeixin.desc = json.desc;
+                onBridgeReady();
+            }
+        };
+        App.buriedPointOnce = function(eventId) {
+            if (Util.inAndroid && Util.inApp()) {
+                android.buriedPointOnce(eventId);
+            } else if (Util.inIos && Util.inIosApp && !Util.inWx) {
+                var url = 'native://buriedPointOnce?eventId=' + eventId;
+                openWithIframe(url);
+            }
+        };
+        App.setMenu = function(menuList) {
+            var json = {};
+            str = '['
+            menuList.forEach(function(obj, index) {
+                var str = obj['menuAction'] + (new Date().getTime());
+                window.str =
+                    obj['menuAction'] =
+                    json['item' + index] = obj;
+                str += JSON.stringify(obj) + ',';
+            })
+            str = str.substring(0, str.length - 1);
+            str += ']';
+            if (this.android) {
+                android.setTitleMenu(str);
+            } else {
+                WebViewJavascriptBridge.callHandler('setMenu', json)
+            }
+        };
+        window.App = App;
+
+        var onBridgeReady = function() {
+            if (!dataForWeixin) {
+                return;
+            }
+            WeixinJSBridge.on('menu:share:appmessage',
+                function(argv) {
+                    WeixinJSBridge.invoke('sendAppMessage', {
+                            "appid": dataForWeixin.appId,
+                            "img_url": dataForWeixin.MsgImg,
+                            "img_width": "120",
+                            "img_height": "120",
+                            "link": dataForWeixin.url,
+                            "desc": dataForWeixin.desc,
+                            "title": dataForWeixin.title
+                        },
+                        function(res) {
+                            (dataForWeixin.callback)();
+                        });
+                });
+            WeixinJSBridge.on('menu:share:timeline',
+                function(argv) {
+                    (dataForWeixin.callback)();
+                    WeixinJSBridge.invoke('shareTimeline', {
+                            "img_url": dataForWeixin.TLImg,
+                            "img_width": "120",
+                            "img_height": "120",
+                            "link": dataForWeixin.url,
+                            "desc": dataForWeixin.desc,
+                            "title": dataForWeixin.title
+                        },
+                        function(res) {});
+                });
+            WeixinJSBridge.on('menu:share:weibo',
+                function(argv) {
+                    WeixinJSBridge.invoke('shareWeibo', {
+                            "content": dataForWeixin.title,
+                            "url": dataForWeixin.url
+                        },
+                        function(res) {
+                            (dataForWeixin.callback)();
+                        });
+                });
+        };
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+
+
+        var _ = function(dom) {
+            return document.querySelector(dom);
+        };
+
+        var __ = function(str){
+            return document.querySelectorAll(str)
+        };
+
+        function popup(){
+            var i = 0,
+                aClose = __('.cd-popup-close'),
+                aBtn = __('.cd-popup-btn'),
+                aCon = __('.cd-popup-container'),
+                aPop = __('.cd-popup');
+
+            if (!aBtn.length) return;
+
+            for(i = 0; i < aBtn.length; i++){
+                (function(n){
+                    aPop[n].style.position = 'fi'+'xed';
+                    aCon[n].style.position = 'fi'+'xed';
+
+                    aBtn[n].addEventListener('click', function(){
+                        // _('.is-visible') && _('.is-visible').classList.remove('.is-visible');
+                        if(_('.is-visible')){
+                            for(j = 0; j < _('.is-visible').length; j++){
+                               _('.is-visible')[j].classList.remove('.is-visible');
+                            }
+                        }
+                        
+                        aCon[n].classList.add('is-visible');
+                        aPop[n].classList.add('is-visible');
+                    }, false);
+
+                    aCon[n].addEventListener('touchmove', function(ev){
+                        if(ev.target.classList.contains('cd-popup-cover')){
+                            ev.stopPropagation();
+                        }
+                    }, false)
+
+                    aClose[n].addEventListener('click', function(){
+                        aCon[n].classList.remove('is-visible');
+                        aPop[n].classList.remove('is-visible');
+                    }, false);
+                })(i);
+            }
+        }
+
+        function dataSrcset() {
+            var aImg = document.querySelectorAll('img[data-srcset]');
+            for (var i = 0, len = aImg.length; i < len; i++) {
+                aImg[i].setAttribute('src', aImg[i].getAttribute('data-srcset'));
+            }
+        }
+
+        dataSrcset();
+        popup();
+
+        window.clientInfo = {
+            jdPin      : '',
+            version    : '',
+            auth       : ''
+        };
+        function getUrlParam(paramName){
+            var paramValue = "";
+            var isFound = false;
+            if (document.location.search.indexOf("?") == 0 && document.location.search.indexOf("=")>1){
+                arrSource = unescape(document.location.search).substring(1,document.location.search.length).split("&");
+                i = 0;
+                while (i < arrSource.length && !isFound){
+                    if (arrSource[i].indexOf("=") > 0){
+                        if (arrSource[i].split("=")[0].toLowerCase()==paramName.toLowerCase()){
+                            paramValue = arrSource[i].split("=")[1];
+                            isFound = true;
+                        }
+                    }
+                i++;
+                }   
+            }
+            return paramValue;
+        }
+        try{
+            // jdp.getInfo(function(response) {
+            //     var usrInfo = JSON.parse(response);
+            //     clientInfo.jdPin = usrInfo.jdPin;
+            //     clientInfo.version = usrInfo.version;
+            //     clientInfo.auth = usrInfo.auth;
+            // })
+        }catch(err){
+
+        }
+        window.shareCallback = function() {
+            jdp.getInfo(function(response) {
+                var usrInfo = JSON.parse(response);
+                clientInfo.jdPin = usrInfo.jdPin;
+                clientInfo.version = usrInfo.version;
+                clientInfo.auth = usrInfo.auth;
+                
+            })
+
+            jdp.shareUrl({
+                url: dataForWeixin.url,
+                title: dataForWeixin.title,
+                desc: dataForWeixin.desc,
+                channel: 'WX|QQ|WB',
+                callback: function(shareResult) {
+                    if(shareResult === "SUCCESS"){
+                        var auth = clientInfo.auth == '' ? getUrlParam('auth') : clientInfo.auth,
+                            entranceId = '2016071310540000031',
+                            data = {'entranceId':entranceId,'auth':auth},
+                            url = 'https://m.jdpay.com/marketing/gameprize/index';
+                        $.ajax({
+                            url:url,
+                            type:'get',
+                            data:{'auth':auth,'entranceId':entranceId},
+                            dataType:'json',
+                            success:function(res){
+                                if(res.code === 'A00000'){
+                                    var maskLayer = $('.maskLayer');
+                                    maskLayer.removeClass('hide');
+                                    if($('.gotoduobaoba')){
+                                        $('.gotoduobaoba').click(function(){
+                                            App.open("ACTIVITY","https://static.jdpay.com/m-duobao/");
+                                        });
+                                    }
+                                } else {
+                                    var maskLayer2 = $('.maskLayer2');
+                                    maskLayer2.removeClass('hide');
+                                    if($('.gotoduobaoba1')){
+                                        $('.gotoduobaoba1').click(function(){
+                                            App.open("ACTIVITY","https://static.jdpay.com/m-duobao/");
+                                        });
+                                    }
+                                }
+                                $('.closeImg').click(function(){
+                                    if(maskLayer){
+                                        maskLayer.addClass('hide');
+                                    }
+                                    if(maskLayer2){
+                                        maskLayer2.addClass('hide');
+                                    }
+
+                                });
+                            },
+                            error:function(err){
+                                alert(err);
+                            }
+                        });
+                    }
+                }
+            })
+        };
+        
+        //az title 和分享
+        if (Util.inApp() && !Util.inWx && Util.inAndroid) {
+            jdp.setTitle("股神7月送真金");
+            jdp.setMenu(
+                [{
+                    "menuTitle": "分享",
+                    "menuAction": "shareCallback"
+                }]
+            )
+        }
+        if (Util.inApp() && !Util.inWx && Util.inIos) {
+            jdp.setTitle("股神7月送真金");
+            var timer = setInterval(function() {
+                if (window.WebViewJavascriptBridge) {
+                    jdp.setMenu(
+                        [{
+                            "menuTitle": "分享",
+                            "menuAction": "shareCallback"
+                        }]
+                    )
+                    clearInterval(timer);
+                }
+            }, 100)
+        }
+
+        if (!Util.inApp() || Util.inWx) {
+            _('.J_openBtn').style.display = 'block';
+            _('.J_openBtn').parentNode.style.paddingBottom = '90px';
+        }
+
+        //定时器闪烁
+        var shrink = $(".shrink");
+        var shrikO = $(".shrikO");
+
+        setInterval(function(){
+            shrink.toggleClass('hide');
+        },800);
+
+        setInterval(function(){
+            shrikO.toggleClass('hide');
+        },800);
+
+        //点击事件
+        _('.page-down').addEventListener('click',function(){
+            App.open('STOCK','stock_openaccount');
+        });
+    
+        $(document.body).on('click', '.slide-a', function(){
+            var rankType = $(this).attr('data-id');
+            if(!Util.inApp() || Util.inWx){
+                var url = '//qianbao.jd.com/p/page/download.htm?module=STOCK¶m='+encodeURIComponent(JSON.stringify({openview:'stock_rank',rankType:rankType}));
+                // var urlT = decodeURI(url);
+                window.location = url;
+            }
+            else{
+                App.open('STOCK','stock_rank', rankType);
+            }
+        })
+    
+
+        $(document).ready(function(){
+            $('[report-eventid="MDownLoadFloat_OpenNow"]').parents('div').hide();
+            $('#m_common_header').hide();
+            $("#mob_adv_1003").next().hide();
+        });
+    })(window, document);
+</script>
+<script type="text/javascript">var jaq = jaq || [];
+    jaq.push(['account','UA-J2011-12']);
+    jaq.push(['domain','jr.jd.com']);
+    (function() {
+        var ja = document.createElement('script'); ja.type = 'text/javascript'; ja.async = true;
+        ja.src = ('https:' == document.location.protocol ? 'https://jrclick' : 'https://jrclick') + '.jd.com/wl.dev.js';
+        var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ja,s);
+    })();
+</script>
+<script type="text/javascript">var jaq = jaq || [];
+jaq.push(['account', 'UA-J2011-12']);
+jaq.push(['domain', 'jr.jd.com']);
+(function() {
+    var ja = document.createElement('script');
+    ja.type = 'text/javascript';
+    ja.async = true;
+    ja.src = ('https:' == document.location.protocol ? 'https://jrclick' : 'https://jrclick') + '.jd.com/wl.dev.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ja, s);
+})();
+</script>
+
